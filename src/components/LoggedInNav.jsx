@@ -18,16 +18,16 @@ function Nav() {
             Staking
           </Link>
           <Link
-            to="#"
+            to="/vesting"
             className="rounded-md py-2 text-xl font-medium text-white hover:text-black"
           >
-            ADDPAGE
+            Statistics
           </Link>
           <Link
-            to="#"
+            to="/entity"
             className="rounded-md py-2 text-xl font-medium text-white hover:text-black"
           >
-            ADDPAGE
+            Worker
           </Link>
           <button className="h-10 w-48 rounded-full border-2 border-white bg-pink-500 text-lg font-bold text-white shadow shadow-white/45">
             <LoginCard />

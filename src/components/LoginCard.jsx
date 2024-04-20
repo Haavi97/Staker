@@ -36,7 +36,6 @@ const LoginCard = () => {
   const [scaAddress, setScaAddress] = useState();
   const [visible, setVisible] = useState(false);
   const [details, setDetails] = useState();
-  // const [dispatchh, setDispatch] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -120,8 +119,6 @@ const LoginCard = () => {
         }
         console.log("Log data that will be send to redux");
         console.log(address);
-        // console.log(scaAddress);
-        // console.log(details);
 
         console.log("End logging data that will be send to redux");
 
