@@ -1,25 +1,34 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import logo from "../assets/logo1.png";
 
 function Nav() {
   return (
     <>
-       <div className="hidden md:block">
-            <div className="ml-10 flex justify-end absolute right-44 p-10 gap-20 top-0 space-x-4 ">             
-            <Link to ="#"
-                className="text-gray-300  hover:text-black px-3 py-2 rounded-md text-xl font-medium" >
-                About Us
-              </Link>
-              <Link to="#"
-                className="text-gray-300  hover:text-black px-3 py-2 rounded-md text-xl font-medium">
-                Pricing
-              </Link>
-              <button className='text-xl rounded-full bg-pink-400 border-2 border-white shadow-xl transition-all duration-300 hover:shadow-xl text-white px-4 hover:bg-white hover:text-black'>
-                <Link>Register</Link>
-              </button>
-            </div>
-          </div>
+      <div className="hidden md:block">
+        <div className="flex">
+          <img className="h-24 w-24" src={logo} />
+          <h1 className="py-8 pl-4 text-3xl text-white">Staker</h1>
+        </div>
+        <div className="absolute right-12 top-0 m-8 flex justify-end gap-16 ">
+          <Link
+            to="#"
+            className="rounded-md py-2 text-xl font-medium text-white hover:text-black"
+          >
+            About Us
+          </Link>
+          <Link
+            to="#"
+            className="rounded-md py-2 text-xl font-medium text-white hover:text-black"
+          >
+            Pricing
+          </Link>
+          <button className="h-10 w-48 rounded-full border-2 border-white bg-pink-500 text-lg font-bold text-white shadow shadow-white/45 transition-all duration-700 ease-out hover:bg-white hover:text-black">
+            <Link>REGISTER</Link>
+          </button>
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
