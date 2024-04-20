@@ -13,7 +13,6 @@ import {
   lightAccountClientActions,
 } from "@alchemy/aa-accounts";
 import { http } from "viem";
-import "./LoginCard.css";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../redux/userSlice";
 
