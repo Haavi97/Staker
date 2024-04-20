@@ -19,11 +19,11 @@ const Landing = () => {
         </h1>
 
         <div className="mt-12 flex justify-start gap-36">
-          <button className="h-12 w-52 rounded-full border-2 border-white bg-pink-500 px-10 text-lg font-bold text-white shadow shadow-white/45 transition-all duration-700 ease-out hover:bg-white hover:text-black">
+          <button className="h-12 w-52 rounded-full border-2 border-white bg-pink-600 px-10 text-lg font-bold text-white shadow shadow-white/45 transition-all duration-700 ease-out hover:bg-white hover:text-black">
             <LoginCard />
           </button>
 
-          <button className="h-12 w-52 rounded-full border-2 border-white bg-pink-500 px-10 text-lg font-bold text-white shadow shadow-white/45 transition-all duration-700 ease-out hover:bg-white hover:text-black">
+          <button className="h-12 w-52 rounded-full border-2 border-white bg-black px-10 text-lg font-bold text-white shadow shadow-white transition-all duration-700 ease-out hover:bg-white hover:text-black">
             <Link to="/staking">DASHBOARD</Link>
           </button>
         </div>
