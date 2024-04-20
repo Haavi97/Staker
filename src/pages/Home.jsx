@@ -11,6 +11,7 @@ function Home() {
         <h1 className='px-20 py-12 text-3xl'>Staker</h1>
         <Nav/>
         <Landing/>
+        
        
    
         {/* <div className='right-20 top-10  absolute'>Wallet</div> */}
