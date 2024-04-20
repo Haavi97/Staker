@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import LoggedInNav from "../components/LoggedInNav";
 import SendERC20Button from "../components/SendERC20Button";
 
@@ -15,7 +15,6 @@ import { VestingFactory, Vesting, ERC20 } from "../constants/sc";
 
 import { useSelector } from "react-redux";
 import LoginCard from "../components/LoginCard";
-import { useCallback, useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { AiOutlineSafety } from "react-icons/ai";
@@ -78,6 +77,8 @@ const Staking = () => {
   useEffect(() => {
     console.log("User Data in Staking Page:", userData);
   }, [userData]);
+
+  useEffect(() => {
     if (provider) {
       getEvents();
     }
