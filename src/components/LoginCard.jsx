@@ -12,8 +12,9 @@ import {
   lightAccountClientActions,
 } from "@alchemy/aa-accounts";
 import { http } from "viem";
-
 import "./LoginCard.css";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../redux/actions/authActions";
 
 const apiKey = import.meta.env.VITE_ALCHEMY_API_KEY;
 const gasManagerPolicyId = import.meta.env.VITE_ALCHEMY_GAS_MANAGER_POLICY_ID;
@@ -29,7 +30,8 @@ const LoginCard = () => {
   const [scaAddress, setScaAddress] = useState();
   const [visible, setVisible] = useState(false);
   const [details, setDetails] = useState();
-  const [dispatch, setDispatch] = useState();
+  // const [dispatchh, setDispatch] = useState();
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     startProvider();
@@ -41,6 +43,7 @@ const LoginCard = () => {
       setScaAddress(null);
       setDetails(null);
       setWeb3authsigner(null);
+      setUserData(null);
 
       if (web3AuthSigner) {
         web3AuthSigner.inner.logout();
@@ -93,6 +96,15 @@ const LoginCard = () => {
             }),
           }).extend(lightAccountClientActions);
         }
+        console.log("Log data that will be send to redux");
+        console.log(address);
+        // console.log(scaAddress);
+        // console.log(details);
+        dispatch(setUserData({ address }));
+        // dispatch(setUserData({ address, scaAddress, details }));
+
+        console.log("End logging data that will be send to redux");
+
         setProvider(provider);
         console.log("provider");
         console.log(provider);
@@ -111,17 +123,25 @@ const LoginCard = () => {
 
   return (
     <>
-      <div className="login-card" onClick={handleClick}>
-        <h2>Account</h2>
-        {starting && <p>Starting...</p>}
-        {address && <p>Signer addres: {address}</p>}
-        {scaAddress && <p>SCA addres: {scaAddress}</p>}
-        {details?.name && <p>Name: {details.name}</p>}
-        {details?.email && <p>Email: {details.email}</p>}
-      </div>
-      <div className="login-card" onClick={logout}>
-        <h2>Logout</h2>
-      </div>
+      {address ? (
+        <div className="" onClick={logout}>
+          <h2>LOGOUT</h2>
+          {starting && <p>Starting...</p>}
+          {address && <p>Signer addres: {address}</p>}
+          {scaAddress && <p>SCA addres: {scaAddress}</p>}
+          {details?.name && <p>Name: {details.name}</p>}
+          {details?.email && <p>Email: {details.email}</p>}
+        </div>
+      ) : (
+        <div className="" onClick={handleClick}>
+          <h2>REGISTER</h2>
+          {/* {starting && <p>Starting...</p>}
+          {address && <p>Signer addres: {address}</p>}
+          {scaAddress && <p>SCA addres: {scaAddress}</p>}
+          {details?.name && <p>Name: {details.name}</p>}
+          {details?.email && <p>Email: {details.email}</p>} */}
+        </div>
+      )}
     </>
   );
 };

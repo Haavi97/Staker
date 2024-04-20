@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo1.png";
+import LoginCard from "./LoginCard";
 
 function Nav() {
   return (
@@ -22,8 +23,10 @@ function Nav() {
           >
             Pricing
           </Link>
-          <button className="h-10 w-48 rounded-full border-2 border-white bg-pink-500 text-lg font-bold text-white shadow shadow-white/45 transition-all duration-700 ease-out hover:bg-white hover:text-black">
-            <Link>REGISTER</Link>
+          <button className="h-10 w-48 rounded-full border-2 border-white bg-pink-500 text-lg font-bold text-white shadow shadow-white/45">
+            {/* transition-all duration-700 ease-out hover:bg-white hover:text-black */}
+            {/* <Link>REGISTER</Link> */}
+            <LoginCard />
           </button>
         </div>
       </div>
