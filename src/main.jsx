@@ -15,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/staking" element={<Staking />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </Router>
     </Provider>
