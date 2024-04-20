@@ -1,3 +1,4 @@
+
 import Nav from './components/Nav'
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <>
       <Home/> 
     </>
-  )
+  );
 }
 
-export default App
+export default App;

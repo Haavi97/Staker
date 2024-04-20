@@ -10,15 +10,25 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@alchemy/aa-accounts": "^3.8.2-alpha.1",
+    "@alchemy/aa-alchemy": "^3.9.0-alpha.3",
+    "@alchemy/aa-core": "^3.8.2-alpha.1",
+    "@alchemy/aa-signers": "^3.8.2-alpha.1",
+    "@tanstack/react-query": "^5.28.9",
+    "@web3auth/base": "^8.3.0",
+    "@web3auth/modal": "^8.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "viem": "^2.8.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
+    "buffer": "^6.0.3",
+    "empty-module": "^0.0.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -26,6 +36,7 @@
     "postcss": "^8.4.38",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "process": "^0.11.10",
     "tailwindcss": "^3.4.3",
     "vite": "^5.2.0"
   },
