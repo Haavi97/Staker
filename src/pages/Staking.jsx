@@ -1,27 +1,27 @@
 import React from "react";
 import { useEffect } from "react";
-//import { useUserData } from "../context/UserContext.jsx";
+import LoggedInNav from "../components/LoggedInNav";
 import { useSelector } from "react-redux";
+import LoginCard from "../components/LoginCard";
 
 const Staking = () => {
-  const userData = useSelector((state) => state.userData); // Adjust the path as necessary
+  const userData = useSelector((state) => state.user.userData);
 
   useEffect(() => {
     console.log("User Data in Staking Page:", userData);
-  }, [userData]); // Logging the userData when it changes
+  }, [userData]);
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-pink-600 to-black">
+      <LoggedInNav />
       <div className="px-20 py-12 text-white  ">
         <h1 className="text-4xl font-bold">STAKING</h1>
         <p className="text-lg">Here do staking and stuff</p>
       </div>
 
-      <div className="absolute right-20 top-10 text-xl ">
-        {userData ? userData.address : "test"}
+      <div className="absolute right-20 top-20 text-xl ">
+        {userData ? userData.address : "NO USER"}
       </div>
-
-      {/* <div className="absolute right-20 top-10 text-xl ">0xA7B2C9F3</div> */}
 
       <div className="mb-8 rounded-lg px-28 py-10 shadow-lg">
         <h2 className="mb-4 text-xl font-semibold text-white">

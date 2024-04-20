@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { createWeb3AuthSigner } from "../web3auth";
 
@@ -14,13 +15,19 @@ import {
 import { http } from "viem";
 import "./LoginCard.css";
 import { useDispatch } from "react-redux";
-import { setUserData } from "../redux/actions/authActions";
+import { setUserData } from "../redux/userSlice";
 
 const apiKey = import.meta.env.VITE_ALCHEMY_API_KEY;
 const gasManagerPolicyId = import.meta.env.VITE_ALCHEMY_GAS_MANAGER_POLICY_ID;
 const rpcUrl = `https://polygon-amoy.g.alchemy.com/v2/${apiKey}`;
 const rpcTransport = http(rpcUrl);
 const chain = polygonAmoy;
+
+// TODO
+// 1 have this card component on every page
+// 2 on each load, check if there is a cookie/localStorage isLoggedIn boolean set to true
+// 3 if boolean is true, call this startProvider() function
+// and thus we get the contextx ready on every reload
 
 const LoginCard = () => {
   const [starting, setStarting] = useState(false);
@@ -32,9 +39,23 @@ const LoginCard = () => {
   const [details, setDetails] = useState();
   // const [dispatchh, setDispatch] = useState();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const isUserLoggedIn = localStorage.getItem("userLoggedIn");
+    console.log(isUserLoggedIn);
+    if (isUserLoggedIn === "true") {
+      console.log("User is supposed to be logged in");
+      startProvider();
+    } else {
+      console.log("User is not logged in, navigating to homepage");
+      navigate("/");
+    }
+  }, []);
 
   const handleClick = () => {
     startProvider();
+    // navigate("/staking");
   };
 
   const logout = async () => {
@@ -43,11 +64,12 @@ const LoginCard = () => {
       setScaAddress(null);
       setDetails(null);
       setWeb3authsigner(null);
-      setUserData(null);
+      localStorage.setItem("userLoggedIn", false);
 
       if (web3AuthSigner) {
         web3AuthSigner.inner.logout();
       }
+      navigate("/");
     } catch (e) {
       console.log("Could not logout");
       console.log(e);
@@ -65,6 +87,7 @@ const LoginCard = () => {
         address = await web3authsigner.getAddress();
       } else {
         web3authsigner = web3AuthSigner;
+        address = await web3authsigner.getAddress();
       }
       const details = await web3authsigner.getAuthDetails();
       console.log("details", details);
@@ -101,6 +124,7 @@ const LoginCard = () => {
         // console.log(scaAddress);
         // console.log(details);
         dispatch(setUserData({ address }));
+        localStorage.setItem("userLoggedIn", true);
         // dispatch(setUserData({ address, scaAddress, details }));
 
         console.log("End logging data that will be send to redux");
@@ -126,11 +150,11 @@ const LoginCard = () => {
       {address ? (
         <div className="" onClick={logout}>
           <h2>LOGOUT</h2>
-          {starting && <p>Starting...</p>}
+          {/* {starting && <p>Starting...</p>}
           {address && <p>Signer addres: {address}</p>}
           {scaAddress && <p>SCA addres: {scaAddress}</p>}
           {details?.name && <p>Name: {details.name}</p>}
-          {details?.email && <p>Email: {details.email}</p>}
+          {details?.email && <p>Email: {details.email}</p>} */}
         </div>
       ) : (
         <div className="" onClick={handleClick}>

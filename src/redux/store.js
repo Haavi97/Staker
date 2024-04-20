@@ -1,16 +1,10 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./userSlice";
 
-// Reducer function
-const reducer = (state = { dataString: "" }, action) => {
-  switch (action.type) {
-    case "SET_USER_DATA":
-      return { ...state, userData: action.payload };
-    default:
-      return state;
-  }
-};
-
-// Create store
-const store = createStore(reducer);
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+  },
+});
 
 export default store;
