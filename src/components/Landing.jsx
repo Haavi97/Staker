@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import hero from "../assets/landing-hero.png";
+import Nav from "./Nav";
+import LoginCard from "./LoginCard";
 
 const Landing = () => {
   return (
@@ -18,11 +20,11 @@ const Landing = () => {
 
         <div className="mt-12 flex justify-start gap-36">
           <button className="h-12 w-52 rounded-full border-2 border-white bg-pink-500 px-10 text-lg font-bold text-white shadow shadow-white/45 transition-all duration-700 ease-out hover:bg-white hover:text-black">
-            <Link>REGISTER</Link>
+            <LoginCard />
           </button>
 
           <button className="h-12 w-52 rounded-full border-2 border-white bg-pink-500 px-10 text-lg font-bold text-white shadow shadow-white/45 transition-all duration-700 ease-out hover:bg-white hover:text-black">
-            <Link>DASHBOARD</Link>
+            <Link to="/staking">DASHBOARD</Link>
           </button>
         </div>
       </div>

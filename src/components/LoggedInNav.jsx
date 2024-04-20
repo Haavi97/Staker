@@ -12,20 +12,24 @@ function Nav() {
         </div>
         <div className="absolute right-12 top-0 m-8 flex justify-end gap-16 ">
           <Link
-            to="#"
+            to="/staking"
             className="rounded-md py-2 text-xl font-medium text-white hover:text-black"
           >
-            About Us
+            Staking
           </Link>
           <Link
             to="#"
             className="rounded-md py-2 text-xl font-medium text-white hover:text-black"
           >
-            Pricing
+            ADDPAGE
+          </Link>
+          <Link
+            to="#"
+            className="rounded-md py-2 text-xl font-medium text-white hover:text-black"
+          >
+            ADDPAGE
           </Link>
           <button className="h-10 w-48 rounded-full border-2 border-white bg-pink-500 text-lg font-bold text-white shadow shadow-white/45">
-            {/* transition-all duration-700 ease-out hover:bg-white hover:text-black */}
-            {/* <Link>REGISTER</Link> */}
             <LoginCard />
           </button>
         </div>
