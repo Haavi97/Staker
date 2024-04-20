@@ -1,6 +1,38 @@
 const VestingFactory = {
-  ADDRESS: "0x64119231f5a6626f743A1168176584a0e76d6f13",
+  ADDRESS: "0xe4111D2465cf40bcc55721C980670817EDF36678",
   ABI: [
+    {
+      anonymous: false,
+      inputs: [
+        {
+          indexed: true,
+          internalType: "address",
+          name: "vestingContract",
+          type: "address",
+        },
+        {
+          indexed: true,
+          internalType: "address",
+          name: "owner",
+          type: "address",
+        },
+      ],
+      name: "VestingContractCreated",
+      type: "event",
+    },
+    {
+      inputs: [],
+      name: "count",
+      outputs: [
+        {
+          internalType: "uint256",
+          name: "",
+          type: "uint256",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+    },
     {
       inputs: [
         {

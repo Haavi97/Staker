@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import LoggedInNav from "../components/LoggedInNav";
 import SendERC20Button from "../components/SendERC20Button";
 
-import { encodeFunctionData, parseEther, formatEther } from "viem";
+import {
+  encodeFunctionData,
+  parseAbiItem,
+  getContract,
+  parseEther,
+  formatEther,
+} from "viem";
 
 import { VestingFactory, Vesting, ERC20 } from "../constants/sc";
 
@@ -15,6 +21,8 @@ const Staking = () => {
   const [timePeriod, setTimePeriod] = useState("");
   const [baseReward, setBaseReward] = useState("");
   const [swapRate, setSwapRate] = useState("");
+  const [lastDeployed, setLastDeployed] = useState("");
+  const [txHash, setTxHash] = useState("");
 
   const userData = useSelector((state) => state.user.userData);
 
@@ -30,14 +38,33 @@ const Staking = () => {
     }
   }, [userData, provider]);
 
+  const getEvents = async () => {
+    const filter = await provider.createEventFilter({
+      address: VestingFactory.ADDRESS,
+      event: parseAbiItem(
+        "event VestingContractCreated(address indexed vestingContract, address indexed owner)",
+      ),
+    });
+    const logs = await provider.getFilterLogs({ filter });
+    console.log("logs", logs);
+  };
+
+  useEffect(() => {
+    if (provider) {
+      getEvents();
+    }
+  }, [provider]);
+
   const handleDeploy = () => {
     deployVestingContract();
   };
 
   const deployVestingContract = async () => {
     try {
-      if (!baseReward || !apy || !swapRate || !timePeriod)
+      if (!baseReward || !apy || !swapRate || !timePeriod) {
         window.alert("Please fill in all fields");
+        return;
+      }
       console.log("Deploying contract");
       console.log("Token address:", tokenAddress);
       console.log("Base reward:", baseReward);
@@ -68,8 +95,34 @@ const Staking = () => {
         hash: uoHash,
       });
       console.log("txHash", txHash);
+      setTxHash(txHash);
+      const tx = await provider.getTransactionReceipt({ hash: txHash });
+      console.log("tx", tx);
+      const contract = getContract({
+        address: VestingFactory.ADDRESS,
+        abi: VestingFactory.ABI,
+        client: provider,
+      });
+
+      console.log("contract", contract);
+      const logs = await contract.getEvents.VestingContractCreated();
+      console.log("logs", logs);
+      let count = await contract.read.count();
+      console.log("count", count);
+      count = parseInt(count.toString());
+      console.log("count to Number", count);
+      const deployedAddress = (
+        await contract.read.getDeployedVestingContracts()
+      )[count - 1];
+      console.log("deployedAddress", deployedAddress);
+      setLastDeployed(deployedAddress);
       if (txHash) {
-        window.alert("Contract deployed successfully. Tx:" + txHash);
+        window.alert(
+          "Contract deployed successfully. Tx: " +
+            txHash +
+            ". Address: " +
+            deployedAddress,
+        );
       }
     } catch (e) {
       console.log(e);
