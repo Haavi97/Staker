@@ -3,33 +3,33 @@ import LoggedInNav from "../components/LoggedInNav";
 import { useSelector } from "react-redux";
 import LoginCard from "../components/LoginCard";
 import { useCallback, useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+// import Particles, { initParticlesEngine } from "@tsparticles/react";
+// import { loadSlim } from "@tsparticles/slim";
 import { AiOutlineSafety } from "react-icons/ai";
 import { IoIosWarning } from "react-icons/io";
 import { ImCross } from "react-icons/im";
 
 const Staking = () => {
-  const [init, setInit] = useState(false);
+  // const [init, setInit] = useState(false);
   const userData = useSelector((state) => state.user.userData);
 
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      //await loadAll(engine);
-      //await loadFull(engine);
-      await loadSlim(engine);
-      //await loadBasic(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
+  // useEffect(() => {
+  //   initParticlesEngine(async (engine) => {
+  //     // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+  //     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+  //     // starting from v2 you can add only the features you need reducing the bundle size
+  //     //await loadAll(engine);
+  //     //await loadFull(engine);
+  //     await loadSlim(engine);
+  //     //await loadBasic(engine);
+  //   }).then(() => {
+  //     setInit(true);
+  //   });
+  // }, []);
 
-  const particlesLoaded = (container) => {
-    console.log(container);
-  };
+  // const particlesLoaded = (container) => {
+  //   console.log(container);
+  // };
 
   useEffect(() => {
     console.log("User Data in Staking Page:", userData);
@@ -43,7 +43,7 @@ const Staking = () => {
         {userData ? userData.address : "NO USER"}
       </div> */}
       <h1 className="pt-10 text-center text-2xl font-bold text-white">
-        Logged in as {userData.details.name}
+        Logged in as {userData?.details.name}
       </h1>
       <div className="mb-8 rounded-lg px-28 py-10 shadow-lg">
         <h2 className="mb-4 text-center text-xl font-semibold text-white">
@@ -256,7 +256,7 @@ const Staking = () => {
           </table>
         </div>
       </div>
-      {init && (
+      {/* {init && (
         <Particles
           id="tsparticles"
           particlesLoaded={particlesLoaded}
@@ -325,7 +325,7 @@ const Staking = () => {
             detectRetina: true,
           }}
         />
-      )}
+      )} */}
     </div>
   );
 };

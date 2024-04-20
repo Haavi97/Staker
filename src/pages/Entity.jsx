@@ -84,7 +84,7 @@ const Entity = () => {
       <LoggedInNav />
       <div className="mb-4 flex items-center justify-center  text-center">
         <h1 className="mt-10 text-2xl font-bold ">
-          Logged in as {userData.details.name}
+          Logged in as {userData?.details.name}
         </h1>
       </div>
 

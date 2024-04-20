@@ -34,7 +34,7 @@ ChartJS.register(
 );
 
 export const data = {
-  labels: ["Estonia", "Norra", "Holland", "Poland", "Finland"],
+  labels: ["Estonia", "Norway", "Holland", "Poland", "Finland"],
   datasets: [
     {
       label: "# of Tokens",
@@ -62,7 +62,7 @@ export const dataHealth = {
   labels: ["Critical", "Warning", "Good"],
   datasets: [
     {
-      label: "# of Tokens",
+      label: "# of vesting programs",
       data: [1, 2, 28],
       backgroundColor: [
         "rgba(255, 0, 0, 0.4)",
@@ -107,18 +107,6 @@ const options = {
       },
     },
   },
-  scales: {
-    x: {
-      ticks: {
-        color: "white",
-      },
-    },
-    y: {
-      ticks: {
-        color: "white",
-      },
-    },
-  },
   elements: {
     point: {
       backgroundColor: "rgba(255, 255, 255, 1)",
@@ -148,7 +136,7 @@ const Vesting = () => {
         <LoggedInNav />
         <div className="mb-4 flex items-center justify-center  text-center">
           <h1 className="pt-10 text-2xl font-bold ">
-            Logged in as {userData.details.name}
+            Logged in as {userData?.details.name}
           </h1>
         </div>
 
