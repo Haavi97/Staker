@@ -4,6 +4,7 @@ import Nav from '../components/Nav'
 import Landing from '../components/Landing'
 
 function Home() {
+  
 
   return (
     <>
@@ -12,8 +13,7 @@ function Home() {
         <Nav/>
         <Landing/>
         
-       
-   
+
         {/* <div className='right-20 top-10  absolute'>Wallet</div> */}
       </div>
     </>
