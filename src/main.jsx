@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 import Staking from './pages/Staking.jsx'
 import Vesting from './pages/Vesting.jsx'
 import Entity from './pages/Entity.jsx'
+import Info from './pages/Info.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,6 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/staking' element={<Staking/>}/>
         <Route path='/vesting' element={<Vesting/>}/>
         <Route path='/entity' element={<Entity/>}/>
+        <Route path='/info' element={<Info/>}/>
+        
       </Routes>
     </Router>
   </React.StrictMode>,
