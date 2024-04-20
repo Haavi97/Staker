@@ -122,9 +122,6 @@ const LoginCard = () => {
         console.log(address);
         // console.log(scaAddress);
         // console.log(details);
-        dispatch(setUserData({ address }));
-        localStorage.setItem("userLoggedIn", true);
-        // dispatch(setUserData({ address, scaAddress, details }));
 
         console.log("End logging data that will be send to redux");
 
@@ -133,6 +130,9 @@ const LoginCard = () => {
         console.log(provider);
         scaAddress = await provider.getAddress();
         console.log("scaAddress", scaAddress);
+        dispatch(setUserData({ address, provider, scaAddress, details }));
+        localStorage.setItem("userLoggedIn", true);
+        // dispatch(setUserData({ address, scaAddress, details }));
         setAddress(address);
         setScaAddress(scaAddress);
       }
