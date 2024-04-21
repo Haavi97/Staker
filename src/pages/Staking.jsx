@@ -2,6 +2,7 @@ import React from "react";
 import { useCallback, useEffect, useState } from "react";
 import LoggedInNav from "../components/LoggedInNav";
 import SendERC20Button from "../components/SendERC20Button";
+import GaladrielOracle from "../components/GaladrielOracle";
 
 import {
   encodeFunctionData,
@@ -233,6 +234,7 @@ const Staking = () => {
           >
             DEPLOY
           </button>
+          <GaladrielOracle />
           {/* <SendERC20Button provider={provider} address={ERC20.ADDRESS} /> */}
         </div>
       </div>
