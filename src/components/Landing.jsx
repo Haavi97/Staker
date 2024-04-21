@@ -9,13 +9,13 @@ const Landing = () => {
     <div className="flex">
       <div className="mt-24 px-20">
         <h1 className="mb-3 font-inter text-7xl font-black text-white">
-          STAKING SERVICES
+          REVOLUTIONIZE YOUR
         </h1>
         <h1 className="font-inter text-7xl font-black text-white">
-          HERE WE ARE
+          EMPLOYEE BENEFITS
         </h1>
         <h1 className="py-10 text-4xl font-normal text-white">
-          shake the bake the cake the take
+          Staking and Vesting made SIMPLE
         </h1>
 
         <div className="mt-12 flex justify-start gap-36">
